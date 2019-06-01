@@ -81,6 +81,7 @@ MIDDLEWARE = [
     'auditlog.middleware.AuditlogMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'pipeline.middleware.MinifyHTMLMiddleware',
 ]
 
