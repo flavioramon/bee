@@ -1,1 +1,1 @@
-web: gunicorn bee.heroku_wsgi --workers=4
+web: gunicorn bee.wsgi --workers=4
