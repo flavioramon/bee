@@ -1,0 +1,65 @@
+{% extends "base.html" %}{% load static widget_tweaks %}
+
+{% block title %}Registro{% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 100vh">
+    <div class="col"></div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          Registro
+        </div>
+        <div class="card-body">
+          <form class="mb-4 mt-3" action="{% url 'account_signup' %}" method="post">{% csrf_token %}
+            <div class="form-group">
+              <label class="form-label">Usuário</label>
+              {% render_field form.username class="form-control form-control-sm" %}
+              {% if form.username.errors %}
+                <small class="form-text text-danger">
+                  {{ form.username.errors.0 }}
+                </small>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              {% render_field form.email class="form-control form-control-sm"  %}
+              {% if form.email.errors %}
+                <small class="form-text text-danger">
+                  {{ form.email.errors.0 }}
+                </small>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label">Senha</label>
+              {% render_field form.password1 class="form-control form-control-sm" %}
+              {% if form.password1.errors %}
+                <small class="form-text text-danger">
+                  {{ form.password1.errors.0 }}
+                </small>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirmar Senha</label>
+              {% render_field form.password2 class="form-control form-control-sm" %}
+              {% if form.password2.errors %}
+                <small class="form-text text-danger">
+                  {{ form.password2.errors.0 }}
+                </small>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Registrar</button>
+          </form>
+        
+          <div class="text-center text-muted">
+            Já tem uma conta?
+            <a href="{% url 'account_login' %}">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock body %}

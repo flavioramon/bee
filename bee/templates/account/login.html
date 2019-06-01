@@ -1,4 +1,4 @@
-{% extends "account/base.html" %}{% load static widget_tweaks %}
+{% extends "base.html" %}{% load static widget_tweaks %}
 
 {% block title %}Login{% endblock title %}
 
@@ -41,6 +41,11 @@
                 <button type="submit" class="btn btn-primary btn-sm">
                   <i class="fa fa-sign-in-alt"></i> Login
                 </button>
+              </div>
+              <hr>
+              <div>
+                <a href="{% url 'account_reset_password' %}" class="float-left">Esqueci minha senha</a>
+                <a href="{% url 'account_signup' %}" class="float-right">Registrar</a>
               </div>
             </form>
           </div>
