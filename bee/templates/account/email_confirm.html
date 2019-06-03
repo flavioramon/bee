@@ -1,6 +1,6 @@
-{% extends "base.html" %}{% load static %}
+{% extends 'base.html' %}
 
-{% block title %}Conta confirmada{% endblock title %}
+{% block title %}Ativação de conta{% endblock %}
 
 {% block body %}
   <div class="container-fluid">
@@ -8,13 +8,13 @@
       <div class="col"></div>
       <div class="col-4">
         <div class="card">
-          <div class="card-header">
-            Conta confirmada
-          </div>
+          <div class="card-header">Ativação de conta</div>
+          
           <div class="card-body">
-            <p>Sua conta foi ativada com sucesso. Agora você pode fazer login em nosso site. Obrigado.</p>
-            <hr>
-            <a href="{% url 'account_login' %}">Login</a>
+            <p>Sua conta foi ativada com sucesso. Agora você pode fazer login em nosso site.</p>
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-block">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
           </div>
         </div>
       </div>

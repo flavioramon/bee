@@ -1,57 +1,50 @@
-{% extends "base.html" %}{% load static widget_tweaks %}
-
-{% block title %}Login{% endblock title %}
+{% extends 'base.html' %}{% load render_field from widget_tweaks %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
-  <div class="container-fluid">
-    <div class="row align-items-center" style="height: 100vh">
-      <div class="col"></div>
-      <div class="col-4">
-        <div class="card">
-          <div class="card-header">
-            Login
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 100vh">
+    <div class="col"></div>
+    <div class="col-4">
+        {% if form.non_field_errors %}
+          <div class="alert alert-warning">
+            {{ form.non_field_errors.0 }}
           </div>
-          <div class="card-body">    
-            <form class="mb-5 mt-3" action="{% url 'account_login' %}" method="post">{% csrf_token %}
+        {% endif %}
+        <div class="card">
+          <div class="card-header">Login</div>
+          <div class="card-body">
+            <form action="{% url 'account_login' %}" method="post">{% csrf_token %}
               <div class="form-group">
-                <label class="form-label">Usuário</label>
-                {% render_field form.login class="form-control form-control-sm" required="required" autofocus="autofocus" %}
-                {% if form.login.errors %}
-                  <small class="form-text text-danger">
-                    {{ form.login.errors.0 }}
-                  </small>
-                {% endif %}
+                <label for="id_username">Usuário</label>
+                {% render_field form.login class="form-control form-control-sm" placeholder="Nome de usuário ou e-mail" autofocus="autofocus" %}
               </div>
+
               <div class="form-group">
-                <label class="form-label d-flex justify-content-between align-items-end">
-                  <div>Senha</div>
+                <label for="id_password">Senha</label>
+                {% render_field form.password class="form-control form-control-sm" placeholder="Senha" %}
+              </div>
+
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value | default:'/' }}" />
+
+              <div class="checkbox clearfix">
+                <label class="float-right">
+                  {{ form.remember }} Lembrar
                 </label>
-                {% render_field form.password class="form-control form-control-sm" required="required" %}
-                {% if form.password.errors %}
-                  <small class="form-text text-danger">
-                    {{ form.password.errors.0 }}
-                  </small>
-                {% endif %}
               </div>
-              <div class="d-flex justify-content-between align-items-center m-0">
-                <label class="custom-control custom-checkbox m-0">
-                  <input type="checkbox" name="remember" class="custom-control-input">
-                  <span class="custom-control-label">Lembrar</span>
-                </label>
-                <button type="submit" class="btn btn-primary btn-sm">
-                  <i class="fa fa-sign-in-alt"></i> Login
-                </button>
-              </div>
-              <hr>
-              <div>
-                <a href="{% url 'account_reset_password' %}" class="float-left">Esqueci minha senha</a>
-                <a href="{% url 'account_signup' %}" class="float-right">Registrar</a>
-              </div>
+              <hr/>
+
+              <button type="submit" class="btn btn-primary btn-sm float-right" id="id_login_button">
+                <i class="fas fa-sign-in-alt"></i> Login
+              </button>
             </form>
+
+            <a href="{% url 'account_reset_password' %}">Esqueci minha senha</a><br>
+            <a href="{% url 'account_signup' %}">Registrar</a>
           </div>
         </div>
       </div>
       <div class="col"></div>
     </div>
   </div>
-{% endblock body %}
+{% endblock %}

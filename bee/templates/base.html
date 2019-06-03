@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'bootstrap-vue/dist/bootstrap-vue.min.css' %}">
-  <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static '@fortawesome/fontawesome-free/css/all.min.css' %}">
 
   {% stylesheet 'base' %}
 
@@ -24,7 +24,7 @@
         <b-row class="mt-1">
           <b-col></b-col>
           <b-col cols="6">
-            <b-navbar toggleable="lg" type="dark" variant="dark"  style="border-radius: 5px">
+            <b-navbar toggleable="lg" type="dark" variant="dark" style="border-radius: .25em">
           
               <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           
@@ -32,10 +32,27 @@
                 <b-navbar-brand href="/" class="mr-auto">BEE</b-navbar-brand>
                 
                 <b-navbar-nav class="ml-auto">
-                  <b-nav-item-dropdown right>
+                  <b-nav-item-dropdown>
                     <!-- Using 'button-content' slot -->
-                    <template slot="button-content">Bem vindo(a) <em>{{ user.get_full_name|default:user.username }}</em></template>
-                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">Logout</b-dropdown-item>
+                    <template slot="button-content">
+                      <span class="text-white">Cadastros</span>
+                    </template>
+                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">
+                      <span class="position-relative" style="left: -10px"><i class="fas fa-bug"></i> Cadastrar Abelha</span>
+                    </b-dropdown-item>
+                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">
+                      <i class="fas fa-exclamation"></i> Cadastrar Aviso
+                    </b-dropdown-item>
+                  </b-nav-item-dropdown>
+
+                  <b-nav-item-dropdown>
+                    <!-- Using 'button-content' slot -->
+                    <template slot="button-content">
+                      <span class="text-white">Bem vindo(a) <em>{{ user.get_full_name|default:user.username }}</em></span>
+                    </template>
+                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">
+                      <i class="fas fa-sign-out-alt"></i> Logout
+                    </b-dropdown-item>
                   </b-nav-item-dropdown>
                 </b-navbar-nav>
               </b-collapse>

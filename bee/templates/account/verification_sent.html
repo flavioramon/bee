@@ -1,22 +1,21 @@
-{% extends "base.html" %}{% load static %}
+{% extends 'base.html' %}
 
-{% block title %}Email enviado{% endblock title %}
+{% block title %}Registro Inicializado{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-  <div class="row align-items-center" style="height: 100vh">
-    <div class="col"></div>
-    <div class="col-4">
-      <div class="card">
-        <div class="card-header">
-          Email enviado
-        </div>
-        <div class="card-body">
-          <p>Um email com instruções para completar seu registro foi enviado.</p>
+  <div class="container-fluid">
+    <div class="row align-items-center" style="height: 100vh">
+      <div class="col"></div>
+      <div class="col-4">
+        <div class="card">
+          <div class="card-header">Registro Inicializado</div>
+          
+          <div class="card-body">
+            <p>Um email com instruções para completar seu registro foi enviado.</p>
+          </div>
         </div>
       </div>
+      <div class="col"></div>
     </div>
-    <div class="col"></div>
   </div>
-</div>
 {% endblock body %}
