@@ -29,7 +29,7 @@
               <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           
               <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-brand href="/" class="mr-auto">BEE</b-navbar-brand>
+                <b-navbar-brand href="/#/" class="mr-auto">BEE</b-navbar-brand>
                 
                 <b-navbar-nav class="ml-auto">
                   <b-nav-item-dropdown>
@@ -37,10 +37,10 @@
                     <template slot="button-content">
                       <span class="text-white">Cadastros</span>
                     </template>
-                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">
+                    <b-dropdown-item href="/#/nova/abelha/">
                       <span class="position-relative" style="left: -10px"><i class="fas fa-bug"></i> Cadastrar Abelha</span>
                     </b-dropdown-item>
-                    <b-dropdown-item href="/contas/logout" onclick="return confirm('Deseja sair da aplicação?')">
+                    <b-dropdown-item href="/contas/logout">
                       <i class="fas fa-exclamation"></i> Cadastrar Aviso
                     </b-dropdown-item>
                   </b-nav-item-dropdown>
@@ -61,7 +61,7 @@
           <b-col></b-col>
         </b-row>
 
-        <abelhas></abelhas>
+        <router-view></router-view>
       </b-container>
     </div>
   {% endblock body %}
@@ -71,6 +71,9 @@
   <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
   <script src="{% static 'axios/dist/axios.min.js' %}"></script>
   <script src="{% static 'vue/dist/vue.min.js' %}"></script>
+  <script src="{% static 'vue-router/dist/vue-router.min.js' %}"></script>
+  <script src="{% static 'vee-validate/dist/vee-validate.min.js' %}"></script>
+  <script src="{% static 'vee-validate/dist/locale/pt_BR.js' %}"></script>
   <script src="{% static 'bootstrap-vue/dist/bootstrap-vue.min.js' %}"></script>
 
   {% javascript 'abelhas' %}

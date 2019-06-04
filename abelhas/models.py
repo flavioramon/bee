@@ -65,5 +65,10 @@ class Abelha(TimeStampedModel):
 
     historico = AuditlogHistoryField()
 
+    class Meta:
+        """Meta opções do modelo."""
+
+        ordering = ['-id']
+
 
 auditlog.register(Abelha)

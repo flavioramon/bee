@@ -59,3 +59,30 @@ class AbelhaViewSet(viewsets.ModelViewSet):
     pagination_class = CorePaginator
     queryset = models.Abelha.objects.all()
     search_fields = ['codigo', 'numero', 'especie__nome', 'tipo__nome', 'pais__nome']
+
+
+class EspecieAbelhaViewSet(viewsets.ModelViewSet):
+    """Viewsets para especies."""
+
+    serializer_class = EspecieAbelhaSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    pagination_class = CorePaginator
+    queryset = models.EspecieAbelha.objects.all()
+
+
+class TipoAbelhaViewSet(viewsets.ModelViewSet):
+    """Viewsets para tipos de abelhas."""
+
+    serializer_class = TipoAbelhaSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    pagination_class = CorePaginator
+    queryset = models.TipoAbelha.objects.all()
+
+
+class PaisAbelhaViewSet(viewsets.ModelViewSet):
+    """Viewsets para Paiss de abelhas."""
+
+    serializer_class = PaisAbelhaSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    pagination_class = CorePaginator
+    queryset = models.PaisAbelha.objects.all()

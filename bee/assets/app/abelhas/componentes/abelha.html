@@ -1,0 +1,71 @@
+<b-row class="mt-1">
+  <b-col></b-col>
+  <b-col cols="6">
+    <b-card header="Cadastro de abelha" header-class="text-center">
+      <b-row>
+        <b-col></b-col>
+        <b-col cols="4">
+          <b-form>
+            <b-form-group label="Código">
+              <b-form-input size="sm" name="código" v-model="abelha.codigo" v-validate.initial="'required'"
+                  :class="{ 'is-invalid': errors.has('código'), 'is-valid': !errors.has('código') }"></b-form-input>
+              <div class="invalid-feedback" v-show="errors.has('código')">
+                [[ errors.first('código') ]]
+              </div>
+            </b-form-group>
+
+            <b-form-group label="Número">
+              <b-form-input size="sm" name="número" v-model="abelha.numero" v-validate.initial="'required'"
+                  :class="{'is-invalid': errors.has('número'), 'is-valid': !errors.has('número') }"></b-form-input>
+              <div class="invalid-feedback">
+                [[ errors.first('número') ]]
+              </div>
+            </b-form-group>
+
+            <b-form-group label="Espécie">
+              <b-form-select size="sm" name="espécie" v-model='abelha.especie' :options="abelhasEspecieOptions" v-validate.initial="'required'"
+                  :class="{'is-invalid': errors.has('espécie'), 'is-valid': !errors.has('espécie') }">
+                <template slot="first">
+                  <option :value="null">-- Selecione uma opção de Espécie --</option>
+                </template>
+              </b-form-select>
+              <div class="invalid-feedback">
+                [[ errors.first('espécie') ]]
+              </div>
+            </b-form-group>
+
+            <b-form-group label="Tipo">
+              <b-form-select size="sm" name="tipo" v-model="abelha.tipo" :options="abelhasTipoOptions" v-validate.initial="'required'"
+                  :class="{'is-invalid': errors.has('tipo'), 'is-valid': !errors.has('tipo') }">
+                <template slot="first">
+                  <option :value="null">-- Selecione uma opção de Tipo --</option>
+                </template>
+              </b-form-select>
+              <div class="invalid-feedback">
+                [[ errors.first('tipo') ]]
+              </div>
+            </b-form-group>
+
+            <b-form-group label="País">
+              <b-form-select size="sm" name="país" v-model="abelha.pais" :options="abelhasPaisOptions" v-validate.initial="'required'"
+                  :class="{'is-invalid': errors.has('país'), 'is-valid': !errors.has('país') }">
+                <template slot="first">
+                  <option :value="null">-- Selecione uma opção de País --</option>
+                </template>
+              </b-form-select>
+              <div class="invalid-feedback">
+                [[ errors.first('país') ]]
+              </div>
+            </b-form-group>
+            
+            <b-button size="sm" class="btn btn-primary btn-block" :disabled="errors.any()" @click="cadastrarAbelha">
+              <i class="fas fa-save"></i> Cadastrar
+            </b-button>
+          </b-form>
+        </b-col>
+        <b-col></b-col>
+      </b-row>
+    </b-card>
+  </b-col>
+  <b-col></b-col>
+</b-row>
