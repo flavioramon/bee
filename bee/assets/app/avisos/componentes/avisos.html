@@ -1,14 +1,14 @@
 <div>
   <loading :active.sync="loading" :is-full-page="false"></loading>
   <div class="clearfix">
-    <p class="float-left">Total de Registros: [[ abelhas.count ]]</p>
+    <p class="float-left">Total de Registros: [[ avisos.count ]]</p>
     <div class="float-right">
-      <b-form @submit.prevent="paginarAbelhas(1)">
+      <b-form @submit.prevent="paginarAvisos(1)">
         <b-input-group>
-          <b-form-input size="sm" v-model="searchAbelhas" placeholder="buscar..."
+          <b-form-input size="sm" v-model="searchAvisos" placeholder="buscar..."
             @focus="$event.target.select()"></b-form-input>
           <b-input-group-append>
-            <b-button size="sm" @click="paginarAbelhas(1)">
+            <b-button size="sm" @click="paginarAvisos(1)">
               <i class="fa fa-search"></i>
             </b-button>
           </b-input-group-append>
@@ -17,8 +17,8 @@
     </div>
   </div>
 
-  <div v-show="abelhas.count > 0">
-    <b-table :items="abelhas.results" :fields="abelhasFields" small bordered hover>
+  <div v-show="avisos.count > 0">
+    <b-table :items="avisos.results" :fields="avisosFields" small bordered hover>
       <template slot="especie_data" slot-scope="{ item }">
         [[ item.especie_data.nome ]]
       </template>
@@ -29,10 +29,10 @@
         [[ item.pais_data.nome ]]
       </template>
     </b-table>
-    <b-pagination size="sm" align="center" v-model="page" :per-page="pageSizeAbelhas"
-      :total-rows="abelhas.count" @change="paginarAbelhas"></b-pagination>
+    <b-pagination size="sm" align="center" v-model="page" :per-page="pageSizeAvisos"
+      :total-rows="avisos.count" @change="paginarAvisos"></b-pagination>
   </div>
-  <div v-show="abelhas.count === 0">
+  <div v-show="avisos.count === 0">
     <h5>Sem registros</h5>
   </div>
 </div>

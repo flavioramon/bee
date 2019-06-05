@@ -1,2 +1,13 @@
 #!/usr/bin/env python3
 """Heroku post compile hook."""
+
+import os
+
+
+def main():
+    """."""
+    os.system('./manage.py migrate')
+
+
+if __name__ == '__main__':
+    main()

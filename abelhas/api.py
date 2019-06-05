@@ -52,7 +52,7 @@ class AbelhaSerializer(serializers.ModelSerializer):
 
 
 class AbelhaViewSet(viewsets.ModelViewSet):
-    """Viewsets para abelhas."""
+    """Conjunto de views para abelhas."""
 
     serializer_class = AbelhaSerializer
     permission_classes = (permissions.IsAuthenticated,)
@@ -62,7 +62,7 @@ class AbelhaViewSet(viewsets.ModelViewSet):
 
 
 class EspecieAbelhaViewSet(viewsets.ModelViewSet):
-    """Viewsets para especies."""
+    """Conjunto de views para especies."""
 
     serializer_class = EspecieAbelhaSerializer
     permission_classes = (permissions.IsAuthenticated,)
@@ -71,7 +71,7 @@ class EspecieAbelhaViewSet(viewsets.ModelViewSet):
 
 
 class TipoAbelhaViewSet(viewsets.ModelViewSet):
-    """Viewsets para tipos de abelhas."""
+    """Conjunto de views para tipos de abelhas."""
 
     serializer_class = TipoAbelhaSerializer
     permission_classes = (permissions.IsAuthenticated,)
@@ -80,7 +80,7 @@ class TipoAbelhaViewSet(viewsets.ModelViewSet):
 
 
 class PaisAbelhaViewSet(viewsets.ModelViewSet):
-    """Viewsets para Paiss de abelhas."""
+    """Conjunto de views para Paiss de abelhas."""
 
     serializer_class = PaisAbelhaSerializer
     permission_classes = (permissions.IsAuthenticated,)

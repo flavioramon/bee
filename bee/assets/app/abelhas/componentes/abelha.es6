@@ -18,36 +18,30 @@ Vue.component('abelha', resolve => {
       },
       methods: {
         carregarAbelhasEspecie () {
-          this.loading = true
           return this.EspecieAbelha.query().then(response => {
             const temp = {}
             response.data.results.forEach(e => {
               temp[e.id] = e.nome
             })
             this.abelhasEspecieOptions = temp
-            this.loading = false
           })
         },
         carregarAbelhasTipo () {
-          this.loading = true
          return this.TipoAbelha.query().then(response => {
             const temp = {}
             response.data.results.forEach(e => {
               temp[e.id] = e.nome
             })
             this.abelhasTipoOptions = temp
-            this.loading = false
           })
         },
         carregarAbelhasPais () {
-          this.loading = true
           return this.PaisAbelha.query().then(response => {
             const temp = {}
             response.data.results.forEach(e => {
               temp[e.id] = e.nome
             })
             this.abelhasPaisOptions = temp
-            this.loading = false
           })
         },
         cadastrarAbelha () {
@@ -59,9 +53,14 @@ Vue.component('abelha', resolve => {
         }
       },
       mounted () {
-        this.carregarAbelhasEspecie()
-        this.carregarAbelhasTipo()
-        this.carregarAbelhasPais()
+        this.loading = true
+        this.carregarAbelhasEspecie().then(() => {
+          this.carregarAbelhasTipo().then(() => {
+            this.carregarAbelhasPais().then(() => {
+              this.loading = false
+            })
+          })
+        })
       }
     })
   })

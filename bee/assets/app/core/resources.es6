@@ -32,3 +32,10 @@ window.PaisAbelha = {
     Vue.prototype.PaisAbelha = Vue.prototype.Resource(url)
   }
 }
+
+window.Aviso = {
+  install (Vue, options) {
+    const url = '/api/v1/avisos/'
+    Vue.prototype.Aviso = Vue.prototype.Resource(url)
+  }
+}

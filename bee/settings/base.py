@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = [
 
 PROJECT_APPS = [
     'abelhas.apps.AbelhasConfig',
+    'avisos.apps.AvisosConfig',
     'core.apps.CoreConfig',
 ]
 
@@ -161,7 +162,13 @@ PIPELINE['JAVASCRIPT'] = {
             'app/abelhas/**/*.es6'
         ],
         'output_filename': 'js/app/abelhas.min.js',
-    }
+    },
+    'avisos': {
+        'source_filenames': [
+            'app/avisos/**/*.es6'
+        ],
+        'output_filename': 'js/app/avisos.min.js',
+    },
 }
 
 PIPELINE['STYLESHEETS'] = {

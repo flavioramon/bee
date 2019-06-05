@@ -41,7 +41,7 @@
                     <b-dropdown-item href="/#/nova/abelha/">
                       <span class="position-relative" style="left: -10px"><i class="fas fa-bug"></i> Cadastrar Abelha</span>
                     </b-dropdown-item>
-                    <b-dropdown-item href="/contas/logout">
+                    <b-dropdown-item href="/#/novo/aviso/">
                       <i class="fas fa-exclamation"></i> Cadastrar Aviso
                     </b-dropdown-item>
                   </b-nav-item-dropdown>
@@ -78,6 +78,7 @@
   <script src="{% static 'vue-loading-overlay/dist/vue-loading.min.js' %}"></script>
   <script src="{% static 'bootstrap-vue/dist/bootstrap-vue.min.js' %}"></script>
 
+  {% javascript 'avisos' %}
   {% javascript 'abelhas' %}
   {% javascript 'app' %}
 </body>

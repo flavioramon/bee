@@ -1,0 +1,36 @@
+<b-row class="mt-1">
+  <b-col></b-col>
+  <b-col cols="6">
+    <b-card header="Cadastro de aviso" header-class="text-center">
+      <loading :active.sync="loading" :is-full-page="false"></loading>
+      <b-row>
+        <b-col></b-col>
+        <b-col cols="4">
+          <b-form>
+            <b-form-group label="Código">
+              <b-form-input size="sm" name="código" v-model="aviso.codigo" v-validate.initial="'required'"
+                  :class="{ 'is-invalid': errors.has('código'), 'is-valid': !errors.has('código') }"></b-form-input>
+              <div class="invalid-feedback" v-show="errors.has('código')">
+                [[ errors.first('código') ]]
+              </div>
+            </b-form-group>
+
+            <b-form-group label="Descrição">
+              <b-form-textarea size="sm" name="descrição" v-model="aviso.descricao" v-validate.initial="'required'"
+                  :class="{'is-invalid': errors.has('descrição'), 'is-valid': !errors.has('descrição') }"></b-form-textarea>
+              <div class="invalid-feedback">
+                [[ errors.first('descrição') ]]
+              </div>
+            </b-form-group>
+            
+            <b-button size="sm" class="btn btn-primary btn-block" :disabled="errors.any()" @click="cadastrarAviso">
+              <i class="fas fa-save"></i> Cadastrar
+            </b-button>
+          </b-form>
+        </b-col>
+        <b-col></b-col>
+      </b-row>
+    </b-card>
+  </b-col>
+  <b-col></b-col>
+</b-row>
