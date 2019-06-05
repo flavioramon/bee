@@ -5,6 +5,7 @@ Vue.component('abelhas', resolve => {
       delimiters: ['[[', ']]'],
       data () {
         return {
+          loading: false,
           abelhas: [],
           page: 1,
           searchAbelhas: '',
@@ -20,8 +21,10 @@ Vue.component('abelhas', resolve => {
       },
       methods: {
         carregarAbelhas (params) {
+          this.loading = true
           return this.Abelha.query(params).then(response => {
             this.abelhas = response.data
+            this.loading = false
           })
         },
         paginarAbelhas (page) {

@@ -16,6 +16,7 @@
     "lodash": "^4.17.11",
     "vee-validate": "^2.2.9",
     "vue": "^2.5.17",
+    "vue-loading-overlay": "^3.2.0",
     "vue-router": "^3.0.6",
     "yuglify": "^2.0.0"
   }

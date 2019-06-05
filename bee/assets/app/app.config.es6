@@ -2,6 +2,8 @@ Vue.use(bootstrapVue)
 Vue.use(VeeValidate, {
   locale: 'pt_BR'
 })
+Vue.use(VueLoading)
+Vue.component('loading', VueLoading)
 
 Vue.use(Resource)
 Vue.use(User)
