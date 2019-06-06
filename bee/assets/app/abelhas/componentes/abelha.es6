@@ -19,29 +19,29 @@ Vue.component('abelha', resolve => {
       methods: {
         carregarAbelhasEspecie () {
           return this.EspecieAbelha.query().then(response => {
-            const temp = {}
-            response.data.results.forEach(e => {
-              temp[e.id] = e.nome
-            })
-            this.abelhasEspecieOptions = temp
+            const reducer = (result, item) => {
+              result[item.id] = item.nome
+              return result
+            }
+            this.abelhasEspecieOptions = response.data.results.reduce(reducer, {})
           })
         },
         carregarAbelhasTipo () {
          return this.TipoAbelha.query().then(response => {
-            const temp = {}
-            response.data.results.forEach(e => {
-              temp[e.id] = e.nome
-            })
-            this.abelhasTipoOptions = temp
+            const reducer = (result, item) => {
+              result[item.id] = item.nome
+              return result
+            }
+            this.abelhasTipoOptions = response.data.results.reduce(reducer, {})
           })
         },
         carregarAbelhasPais () {
           return this.PaisAbelha.query().then(response => {
-            const temp = {}
-            response.data.results.forEach(e => {
-              temp[e.id] = e.nome
-            })
-            this.abelhasPaisOptions = temp
+            const reducer = (result, item) => {
+              result[item.id] = item.nome
+              return result
+            }
+            this.abelhasPaisOptions = response.data.results.reduce(reducer, {})
           })
         },
         cadastrarAbelha () {
@@ -54,13 +54,15 @@ Vue.component('abelha', resolve => {
       },
       mounted () {
         this.loading = true
-        this.carregarAbelhasEspecie().then(() => {
-          this.carregarAbelhasTipo().then(() => {
-            this.carregarAbelhasPais().then(() => {
-              this.loading = false
-            })
-          })
+        const result = axios.spread((abelhas, tipos, paises) => {
+          this.loading = false
         })
+
+        axios.all([
+          this.carregarAbelhasEspecie(),
+          this.carregarAbelhasTipo(),
+          this.carregarAbelhasPais()
+        ]).then(result)
       }
     })
   })
