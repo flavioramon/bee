@@ -1,5 +1,5 @@
 Vue.component('abelhas', resolve => {
-  axios.get('/public/app/abelhas/componentes/abelhas.html').then(response => {
+  axios.get('/abelhas/partials/abelhas/').then(response => {
     resolve({
       template: response.data,
       delimiters: ['[[', ']]'],

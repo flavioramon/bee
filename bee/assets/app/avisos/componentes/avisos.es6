@@ -1,5 +1,5 @@
 Vue.component('avisos', resolve => {
-  axios.get('/public/app/avisos/componentes/avisos.html').then(response => {
+  axios.get('/avisos/partials/avisos/').then(response => {
     resolve({
       template: response.data,
       delimiters: ['[[', ']]'],
