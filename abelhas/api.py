@@ -68,6 +68,7 @@ class EspecieAbelhaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     pagination_class = CorePaginator
     queryset = models.EspecieAbelha.objects.all()
+    search_fields = ['id', 'nome']
 
 
 class TipoAbelhaViewSet(viewsets.ModelViewSet):
@@ -77,6 +78,7 @@ class TipoAbelhaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     pagination_class = CorePaginator
     queryset = models.TipoAbelha.objects.all()
+    search_fields = ['id', 'nome']
 
 
 class PaisAbelhaViewSet(viewsets.ModelViewSet):
@@ -86,3 +88,4 @@ class PaisAbelhaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     pagination_class = CorePaginator
     queryset = models.PaisAbelha.objects.all()
+    search_fields = ['id', 'nome']
