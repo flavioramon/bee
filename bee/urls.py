@@ -12,7 +12,7 @@ urlpatterns = [
     urls.re_path(r'^$', views.index, name='index'),
     urls.re_path(r'^contas/', urls.include('allauth.urls')),
     urls.re_path(r'^avisos/', urls.include('avisos.urls')),
-    urls.re_path(r'^abelhas/', urls.include('abelhas.urls')),
+    urls.re_path(r'^leituras/', urls.include('leituras.urls')),
     urls.re_path(r'^api/v1/', api.urls),
     urls.re_path(r'^api-auth/', urls.include('rest_framework.urls', namespace='rest_framework')),
     urls.re_path(r'^admin/', admin.site.urls),

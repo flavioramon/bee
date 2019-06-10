@@ -1,8 +1,6 @@
 const router = new VueRouter({
   routes: [
-    { path: '/', component: Vue.component('index') },
-    { path: '/nova/abelha/', component: Vue.component('abelha') },
-    { path: '/novo/aviso/', component: Vue.component('aviso') }
+    { path: '/', component: Vue.component('index') }
   ]
 })
 

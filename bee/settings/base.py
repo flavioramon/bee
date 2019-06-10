@@ -66,9 +66,9 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
-    'abelhas.apps.AbelhasConfig',
     'avisos.apps.AvisosConfig',
     'core.apps.CoreConfig',
+    'leituras.apps.LeiturasConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
