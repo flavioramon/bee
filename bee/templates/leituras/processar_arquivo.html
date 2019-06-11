@@ -9,9 +9,11 @@
       [[ erros[0] ]]
     </b-alert>
     <b-card class="text-center">
-      <b-form-file v-model="data.file" placeholder="Clique para selecionar o arquivo a ser enviado" drop-placeholder="Arraste o arquivo para cá"
-          @change="converterArquivo($event.target.files)"></b-form-file>
-      <b-button class="mt-1" variant="primary" @click="enviarArquivo" block>Processar</b-button>
+      <b-form-file name="file" v-model="data.file" placeholder="Clique para selecionar o arquivo a ser enviado"
+          accept=".csv" @change="converterArquivo($event.target.files)" v-validate.initial="'required'" no-drop></b-form-file>
+      <b-button class="mt-1" variant="primary" @click="enviarArquivo" :disabled="errors.any()" block>
+        <i class="fas fa-file-csv"></i> Processar
+      </b-button>
     </b-card>
   </b-col>
   <b-col></b-col>
