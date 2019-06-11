@@ -33,18 +33,9 @@
                 <b-navbar-brand href="/#/" class="mr-auto">BEE</b-navbar-brand>
                 
                 <b-navbar-nav class="ml-auto">
-                  <b-nav-item-dropdown>
-                    <!-- Using 'button-content' slot -->
-                    <template slot="button-content">
-                      <span class="text-white">Cadastros</span>
-                    </template>
-                    <b-dropdown-item href="/#/nova/abelha/">
-                      <span class="position-relative" style="left: -10px"><i class="fas fa-bug"></i> Cadastrar Abelha</span>
-                    </b-dropdown-item>
-                    <b-dropdown-item href="/#/novo/aviso/">
-                      <i class="fas fa-exclamation"></i> Cadastrar Aviso
-                    </b-dropdown-item>
-                  </b-nav-item-dropdown>
+                  <b-navbar-nav>
+                    <b-nav-item href="/#/processar/arquivo/"><span class="text-white">Enviar Arquivo</span></b-nav-item>
+                  </b-navbar-nav>
 
                   <b-nav-item-dropdown>
                     <!-- Using 'button-content' slot -->
@@ -79,7 +70,7 @@
   <script src="{% static 'bootstrap-vue/dist/bootstrap-vue.min.js' %}"></script>
 
   {% javascript 'avisos' %}
-  {% javascript 'abelhas' %}
+  {% javascript 'leituras' %}
   {% javascript 'app' %}
 </body>
 </html>

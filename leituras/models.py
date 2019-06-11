@@ -14,7 +14,7 @@ class Leitura(TimeStampedModel):
     pc_id = models.CharField(max_length=100)
     ambient_temperature = models.FloatField()
     pwr_amp_temperature = models.FloatField()
-    reader_status = models.IntegerField()
+    reader_status = models.CharField(max_length=10)
     ms_counter = models.FloatField()
     nb_rssi = models.CharField(max_length=15)
     wb_rssi = models.CharField(max_length=23)

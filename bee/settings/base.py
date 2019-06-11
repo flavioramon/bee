@@ -157,11 +157,11 @@ PIPELINE['JAVASCRIPT'] = {
         ],
         'output_filename': 'js/app/app.min.js',
     },
-    'abelhas': {
+    'leituras': {
         'source_filenames': [
-            'app/abelhas/**/*.es6'
+            'app/leituras/**/*.es6'
         ],
-        'output_filename': 'js/app/abelhas.min.js',
+        'output_filename': 'js/app/leituras.min.js',
     },
     'avisos': {
         'source_filenames': [

@@ -1,0 +1,18 @@
+<b-row class="mt-1">
+  <loading :active.sync="loading" :is-full-page="false"></loading>
+  <b-col></b-col>
+  <b-col cols="6">
+    <b-alert variant="success" :show="sucessos.length > 0" dismissible>
+      [[ sucessos[0] ]]
+    </b-alert>
+    <b-alert variant="danger" :show="erros.length > 0" dismissible>
+      [[ erros[0] ]]
+    </b-alert>
+    <b-card class="text-center">
+      <b-form-file v-model="data.file" placeholder="Clique para selecionar o arquivo a ser enviado" drop-placeholder="Arraste o arquivo para cá"
+          @change="converterArquivo($event.target.files)"></b-form-file>
+      <b-button class="mt-1" variant="primary" @click="enviarArquivo" block>Processar</b-button>
+    </b-card>
+  </b-col>
+  <b-col></b-col>
+</b-row>

@@ -1,6 +1,7 @@
 const router = new VueRouter({
   routes: [
-    { path: '/', component: Vue.component('index') }
+    { path: '/', component: Vue.component('index') },
+    { path: '/processar/arquivo/', component: Vue.component('processarArquivo') }
   ]
 })
 
