@@ -8,7 +8,17 @@ Vue.component('processarArquivo', resolve => {
           loading: false,
           erros: [],
           sucessos: [],
-          data: {}
+          data: {arquivo: null},
+          file: null
+        }
+      },
+      watch: {
+        file (val) {
+          const leitor = new FileReader()
+          leitor.addEventListener('load', () => {
+            this.data.arquivo = leitor.result
+          })
+          leitor.readAsDataURL(val)
         }
       },
       methods: {
@@ -26,7 +36,8 @@ Vue.component('processarArquivo', resolve => {
           this.loading = true
           this.Leitura.enviarArquivo(this.data).then(response => {
             this.sucessos.push(response.data)
-            this.data = {}
+            this.file = null
+            this.data = {arquivo: null}
             this.loading = false
           }).catch(response => {
             this.erros.push(response.response.data)
