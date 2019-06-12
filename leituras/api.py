@@ -5,6 +5,8 @@ import csv
 from django.core.files import base
 from rest_framework import decorators, response, serializers, status, viewsets
 
+from core.pagination import CorePaginator
+
 from . import fields, models
 
 
@@ -46,6 +48,7 @@ class LeituraViewSet(viewsets.ModelViewSet):
 
     serializer_class = LeituraSerializer
     queryset = models.Leitura.objects.all()
+    pagination_class = CorePaginator
 
     @decorators.action(detail=False, methods=['POST'])
     def processar_arquivo(self, request, pk=None):

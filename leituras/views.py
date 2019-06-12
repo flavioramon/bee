@@ -10,3 +10,12 @@ class ProcessarArquivoView(generic.TemplateView):
 
 
 processar_arquivo = ProcessarArquivoView.as_view()
+
+
+class LeiturasListaView(generic.TemplateView):
+    """Partial contendo a lista de leituras."""
+
+    template_name = 'leituras/leituras_lista.html'
+
+
+leituras_lista = LeiturasListaView.as_view()
