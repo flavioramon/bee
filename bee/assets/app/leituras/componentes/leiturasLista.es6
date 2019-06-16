@@ -5,6 +5,7 @@ Vue.component('leiturasLista', resolve => {
       delimiters: ['[[', ']]'],
       data () {
         return {
+          mensagens: [],
           loading: false,
           leituras: [],
           leiturasFields: [
@@ -33,6 +34,16 @@ Vue.component('leiturasLista', resolve => {
             this.leiturasPage = page
             this.loading = false
           })
+        },
+        deletarLeituras () {
+          if (confirm('Todas as leituras serão removidas. Deseja continuar?')) {
+            this.loading = true
+            return this.Leitura.deletarLeituras().then(response => {
+              this.loading = false
+              this.mensagens.push(response.data)
+              this.leituras = {count: 0, results: []}
+            })
+          }
         }
       },
       mounted () {

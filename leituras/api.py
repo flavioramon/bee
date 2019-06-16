@@ -4,7 +4,7 @@ import csv
 import logging
 
 from django.core.files import base
-from rest_framework import decorators, response, serializers, status, viewsets
+from rest_framework import decorators, response, serializers, status, viewsets, permissions
 
 from core.pagination import CorePaginator
 
@@ -85,3 +85,9 @@ class LeituraViewSet(viewsets.ModelViewSet):
             logger.error(e)
             mensagem = 'Ocorreu um erro ao processar o arquivo.'
             return response.Response(mensagem, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @decorators.action(detail=False, methods=['delete'], permission_classes=[permissions.IsAdminUser])
+    def deletar_leituras(self, request):
+        """Remove todas as leituras de uma vez. Útil para testar a idempotência do upload de arquivos."""
+        models.Leitura.objects.all().delete()
+        return response.Response('Leituras removidas com sucesso.')

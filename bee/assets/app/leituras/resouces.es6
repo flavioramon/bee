@@ -4,6 +4,9 @@ window.Leitura = {
     Vue.prototype.Leitura = Vue.prototype.Resource(url, {
       enviarArquivo (data) {
         return axios.post(`${url}processar_arquivo/`, data)
+      },
+      deletarLeituras () {
+        return axios.delete(`${url}deletar_leituras/`)
       }
     })
   }

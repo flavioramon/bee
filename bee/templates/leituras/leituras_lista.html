@@ -1,14 +1,22 @@
 <div>
   <loading :active.sync="loading"></loading>
+  <b-alert variant="info" :show="mensagens.length > 0">
+    <ul class="mb-0">
+      <li v-for="mensagem in mensagens">[[ mensagem ]]</li>
+    </ul>
+  </b-alert>
   <div v-show="leituras.count > 0">
+    <b-button size="sm" variant="danger" @click="deletarLeituras" class="float-right mb-3">
+      <i class="fas fa-times"></i> Remover todas as leituras
+    </b-button>
     <h6>Total de Leituras: [[ leituras.count ]]</h6>
     <b-table :fields="leiturasFields" :items="leituras.results" bordered striped small hover>
       <template slot="reading_time_local" slot-scope="data">
         [[ data.item.reading_time_local ]]
       </template>
     </b-table>
+    <b-pagination size="sm" align="center" v-model="leiturasPage" :per-page="leiturasPageSize"
+        :total-rows="leituras.count" @change="paginarLeituras"></b-pagination>
   </div>
   <h5 v-show="leituras.count === 0">Sem registros</h5>
-  <b-pagination size="sm" align="center" v-model="leiturasPage" :per-page="leiturasPageSize"
-      :total-rows="leituras.count" @change="paginarLeituras"></b-pagination>
 </div>

@@ -22,14 +22,6 @@ Vue.component('processarArquivo', resolve => {
         }
       },
       methods: {
-        converterArquivo (arquivos) {
-          const arquivo = arquivos[0]
-          const leitor = new FileReader()
-          leitor.addEventListener('load', () => {
-            this.data.arquivo = leitor.result
-          })
-          leitor.readAsDataURL(arquivo)
-        },
         enviarArquivo () {
           this.erros = []
           this.sucessos = []
