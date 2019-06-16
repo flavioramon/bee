@@ -90,4 +90,4 @@ class LeituraViewSet(viewsets.ModelViewSet):
     def deletar_leituras(self, request):
         """Remove todas as leituras de uma vez. Útil para testar a idempotência do upload de arquivos."""
         models.Leitura.objects.all().delete()
-        return response.Response('Leituras removidas com sucesso.')
+        return response.Response('Leituras removidas com sucesso.', status=status.HTTP_200_OK)
