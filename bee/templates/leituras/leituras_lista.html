@@ -2,7 +2,11 @@
   <loading :active.sync="loading"></loading>
   <div v-show="leituras.count > 0">
     <h6>Total de Leituras: [[ leituras.count ]]</h6>
-    <b-table :fields="leiturasFields" :items="leituras.results" bordered striped small hover></b-table>
+    <b-table :fields="leiturasFields" :items="leituras.results" bordered striped small hover>
+      <template slot="reading_time_local" slot-scope="data">
+        [[ data.item.reading_time_local ]]
+      </template>
+    </b-table>
   </div>
   <h5 v-show="leituras.count === 0">Sem registros</h5>
   <b-pagination size="sm" align="center" v-model="leiturasPage" :per-page="leiturasPageSize"

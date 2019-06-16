@@ -1,6 +1,7 @@
 """Api da aplicação leituras."""
 
 import csv
+import logging
 
 from django.core.files import base
 from rest_framework import decorators, response, serializers, status, viewsets
@@ -8,6 +9,9 @@ from rest_framework import decorators, response, serializers, status, viewsets
 from core.pagination import CorePaginator
 
 from . import fields, models
+
+
+logger = logging.getLogger(__name__)
 
 
 class ProcessarArquivoSerializer(serializers.Serializer):
@@ -42,6 +46,17 @@ class LeituraSerializer(serializers.ModelSerializer):
         model = models.Leitura
         fields = '__all__'
 
+    def create(self, validated_data):
+        """Idempotent create, baseado em reading_time_local e bee_id."""
+        reading_time_local = validated_data.pop('reading_time_local')
+        bee_id = validated_data.pop('bee_id')
+        leitura, criado = models.Leitura.objects.update_or_create(
+            reading_time_local=reading_time_local,
+            bee_id=bee_id,
+            defaults=validated_data
+        )
+        return leitura
+
 
 class LeituraViewSet(viewsets.ModelViewSet):
     """Conjunto de views para leituras."""
@@ -50,8 +65,8 @@ class LeituraViewSet(viewsets.ModelViewSet):
     queryset = models.Leitura.objects.all()
     pagination_class = CorePaginator
 
-    @decorators.action(detail=False, methods=['POST'])
-    def processar_arquivo(self, request, pk=None):
+    @decorators.action(detail=False, methods=['post'])
+    def processar_arquivo(self, request):
         """Processa o arquivo de leitura csv."""
         try:
             serializer = ProcessarArquivoSerializer(data=request.data)
@@ -66,6 +81,7 @@ class LeituraViewSet(viewsets.ModelViewSet):
 
             return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        except Exception:
+        except Exception as e:
+            logger.error(e)
             mensagem = 'Ocorreu um erro ao processar o arquivo.'
             return response.Response(mensagem, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

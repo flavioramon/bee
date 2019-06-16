@@ -305,5 +305,9 @@ LOGGING = {
         'py.warnings': {
             'handlers': ['console'],
         },
+        'leituras': {
+            'handlers': ['dev.console'],
+            'propagate': False,
+        }
     }
 }
