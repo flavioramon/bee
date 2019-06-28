@@ -11,6 +11,7 @@ class Aviso(TimeStampedModel):
 
     codigo = models.CharField(max_length=255)
     descricao = models.TextField()
+    dia = models.DateField()
 
     historico = AuditlogHistoryField()
 

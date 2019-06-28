@@ -8,6 +8,7 @@ Vue.component('loading', VueLoading)
 Vue.use(Resource)
 Vue.use(User)
 Vue.use(Leitura)
+Vue.use(Aviso)
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'

@@ -1,5 +1,5 @@
-Vue.component('avisos', resolve => {
-  axios.get('/avisos/partials/avisos/').then(response => {
+Vue.component('avisosLista', resolve => {
+  axios.get('/avisos/lista/').then(response => {
     resolve({
       template: response.data,
       delimiters: ['[[', ']]'],

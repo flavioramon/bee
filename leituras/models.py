@@ -24,7 +24,7 @@ class Leitura(TimeStampedModel):
     class Meta:
         """Meta opções do modelo."""
 
-        ordering = ['id']
+        ordering = ['reading_time_local']
 
     def __str__(self):
         """toString."""

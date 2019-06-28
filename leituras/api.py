@@ -46,6 +46,9 @@ class LeituraSerializer(serializers.ModelSerializer):
         model = models.Leitura
         fields = '__all__'
 
+    def gerar_avisos(self):
+        """Gera avisos em função do arquivos de leituras."""
+
     def create(self, validated_data):
         """Idempotent create, baseado em reading_time_local e bee_id."""
         reading_time_local = validated_data.pop('reading_time_local')
